@@ -49,16 +49,22 @@ namespace lab_2
 
             //работа с неявно типизированной переменной
             var amount = 3.67;
-            Type amountType = amount.GetType();
-            Console.WriteLine("Тип amount: {0}", amountType);   //Единственное отличие неявно типизированной переменной от обычной, явно типизированной переменной, — в способе определения ее типа. Как только этот тип будет определен, он закрепляется за переменной до конца ее существования.
+            Console.WriteLine("Тип amount: {0}", amount.GetType());   //Единственное отличие неявно типизированной переменной от обычной, явно типизированной переменной, — в способе определения ее типа. Как только этот тип будет определен, он закрепляется за переменной до конца ее существования.
 
             //nullable
+            bool confirm=false;
             Nullable<int> ni = 45;
             Nullable<Double> nd = null;
             Console.WriteLine(ni.Value);
             Console.WriteLine(ni.HasValue);
-            //Console.WriteLine(nd.Value);
+            //Console.WriteLine(nd.Value); выдает ощибку, т.к. nd имеет значение null 
             Console.WriteLine(nd.HasValue);
+
+            Console.ReadKey(confirm);
+            if(!confirm)
+            {
+                Console.Clear();
+            };
 
             //задание 2
             //строковые литералы
@@ -103,7 +109,13 @@ namespace lab_2
             sbild.Insert(0, "SUN");
             Console.WriteLine(sbild);
 
-           /* //задание 3
+            Console.ReadKey(confirm);
+            if (!confirm)
+            {
+                Console.Clear();
+            };
+
+            //задание 3
             //двумерный массив
             const int k = 3;
             int[,] ms = new int[k,k] { { 1, 0, 0 }, { 0, 1, 0 }, { 0, 0, 1 } };
@@ -128,7 +140,7 @@ namespace lab_2
             };
             Console.WriteLine("длинна массива:{0}",collection.Length);
             Console.WriteLine("Введите номер элемента, который хотите заменить");
-            int key = Convert.ToInt32(Console.ReadLine());
+            int key = Convert.ToInt32(Console.ReadLine())-1;
             Console.WriteLine("Введите новое значение");
             String newValue = Console.ReadLine();
             collection[key] = newValue;
@@ -162,29 +174,46 @@ namespace lab_2
 
             //неявнотипизированная переменная
             var unstr = "this is string";
-            var arr = new[] { "this", "is", "array" };*/
+            var arr = new[] { "this", "is", "array" };
+
+            Console.ReadKey(confirm);
+            if (!confirm)
+            {
+                Console.Clear();
+            };
 
             //задание 4
             (int, string, char, string, ulong) tuple = (23, "moon", 'g', "light", 13L);
             (int, string, char, string, ulong) tuple1 = (23, "moon", 'g', "light", 13L);
-            Console.WriteLine("Кортеж1: {0}",tuple);
-            Console.WriteLine("элемент1 {0}", tuple.Item1);
-            Console.WriteLine("элемент3: {0}", tuple.Item3);
-            Console.WriteLine("элемент4: {0}", tuple.Item4);
+            Console.WriteLine("Кортеж 1: {0}",tuple);
+            Console.WriteLine("элемент 1 {0}", tuple.Item1);
+            Console.WriteLine("элемент 3: {0}", tuple.Item3);
+            Console.WriteLine("элемент 4: {0}", tuple.Item4);
 
             //распаковка кортежа
-           // var(number, word, sign, word2, longnum) = CreateCortage(tuple);
+            (int number, string word1, char sign,string  word2, ulong longnum) = tuple;
+            Console.Write("переменные: {0}", number);
+            Console.Write("\t{0}", word1);
+            Console.Write("\t{0}", sign);
+            Console.Write("\t{0}", word2);
+            Console.WriteLine("\t{0}", longnum);
 
             //сравнение
             Console.WriteLine(tuple.CompareTo(tuple1));
 
+            Console.ReadKey(confirm);
+            if (!confirm)
+            {
+                Console.Clear();
+            };
+
             //задание 5
             int[] num = { 5, 45, 234, 76, 15, 87, 45, 765 };
             string line = "google";
-            Console.WriteLine(tupleBack(num, line));
+            Console.WriteLine(TupleBack(num, line));
 
         }
-        public  tupleBack(int[] num,string line)
+        public static (int, int, int, char) TupleBack(int[] num,string line)
         {
             int max = num[0];
             int min = num[0];
