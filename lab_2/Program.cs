@@ -1,7 +1,4 @@
 ﻿using System;
-using System.ComponentModel;
-using System.Reflection.Metadata.Ecma335;
-using System.Security.Cryptography.X509Certificates;
 using System.Text;
 
 namespace lab_2
