@@ -75,9 +75,9 @@ namespace lab_2
             { 
                 Console.WriteLine("строки отличаются"); 
             };
-            Console.WriteLine(String.Compare(str1, str2));  //результат - целое число, которое показывает их относительное положение в порядке сортировки
-            Console.WriteLine(String.CompareOrdinal(str1, str2));
-            Console.WriteLine(str1.CompareTo(str2));
+            Console.WriteLine("String.Compare: {0}",String.Compare(str1, str2));  //результат - целое число, которое показывает их относительное положение в порядке сортировки
+            Console.WriteLine("String.CompareOrdinal: {0}", String.CompareOrdinal(str1, str2));
+            Console.WriteLine("String.CompareTo:{0}", str1.CompareTo(str2));
 
             //три строки
             String str3 = "wonderful";
@@ -85,12 +85,12 @@ namespace lab_2
             Console.WriteLine(megaStr);
             String copyStr = String.Copy(str3);
             Console.WriteLine(copyStr);
-            Console.WriteLine(megaStr.Substring(6,8));
+            Console.WriteLine("подстрока:" + megaStr.Substring(6,8));
             String[] words = megaStr.Split(" ");
             foreach (string word in words)
             Console.WriteLine("слово: {0}",word);
-            Console.WriteLine(megaStr.Insert(10, stringType));
-            Console.WriteLine(megaStr.Remove(3,11));
+            Console.WriteLine("isert:" + megaStr.Insert(10, stringType));
+            Console.WriteLine("remove:" + megaStr.Remove(3,11));
 
             //null strings
             String s0 = "";
