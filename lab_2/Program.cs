@@ -188,7 +188,11 @@ namespace lab_2
             Console.WriteLine("элемент 4: {0}", tuple.Item4);
 
             //распаковка кортежа
-            (int number, string word1, char sign,string  word2, ulong longnum) = tuple;
+            var number = tuple.Item1;
+            var word1 = tuple.Item2;
+            var sign = tuple.Item3;
+            var word2 = tuple.Item4;
+            var longnum = tuple.Item5;
             Console.Write("переменные: {0}", number);
             Console.Write("\t{0}", word1);
             Console.Write("\t{0}", sign);
@@ -209,27 +213,28 @@ namespace lab_2
             string line = "google";
             Console.WriteLine(TupleBack(num, line));
 
-        }
-        public static (int, int, int, char) TupleBack(int[] num,string line)
-        {
-            int max = num[0];
-            int min = num[0];
-            int sum = 0;
-            for (int i = 0; i < num.Length; i++)
+            (int, int, int, char) TupleBack(int[] num, string line)
             {
-                if(num[i]>max)
+                int max = num[0];
+                int min = num[0];
+                int sum = 0;
+                for (int i = 0; i < num.Length; i++)
                 {
-                    max = num[i];
-                };
-                if (num[i] < min)
-                {
-                    min = num[i];
-                };
-                sum += num[i];
+                    if (num[i] > max)
+                    {
+                        max = num[i];
+                    };
+                    if (num[i] < min)
+                    {
+                        min = num[i];
+                    };
+                    sum += num[i];
+                }
+                char sign = Convert.ToChar(line.Substring(0, 1));
+                (int, int, int, char) resultTuple = (max, min, sum, sign);
+                return resultTuple;
             }
-            char sign = Convert.ToChar(line.Substring(0, 1));
-            (int, int, int, char) resultTuple = (max, min, sum, sign);
-            return resultTuple;
         }
+        
     }
 }
